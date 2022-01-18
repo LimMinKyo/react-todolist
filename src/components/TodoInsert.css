@@ -12,8 +12,14 @@
   opacity: 0.8;
 }
 
+.form_layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 form {
-  margin-left: 10%;
+  margin: 0 auto;
   position: fixed;
   top: 40%;
   display: flex;

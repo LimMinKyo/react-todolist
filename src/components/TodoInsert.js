@@ -32,35 +32,37 @@ const TodoInsert = ({
   return (
     <div>
       <div className="background" onClick={onInsertToggle}></div>
-      <form
-        onSubmit={
-          selectedTodo
-            ? () => {
-                onUpdate(selectedTodo.id, value);
-              }
-            : onSubmit
-        }
-      >
-        <input placeholder="please type" value={value} onChange={onChange} />
-        {selectedTodo ? (
-          <div className="rewrite">
-            <TiPencil
-              onClick={() => {
-                onUpdate(selectedTodo.id, value);
-              }}
-            />
-            <TiTrash
-              onClick={() => {
-                onRemove(selectedTodo.id);
-              }}
-            />
-          </div>
-        ) : (
-          <button type="submit">
-            <MdAddCircle />
-          </button>
-        )}
-      </form>
+      <div className="form_layout">
+        <form
+          onSubmit={
+            selectedTodo
+              ? () => {
+                  onUpdate(selectedTodo.id, value);
+                }
+              : onSubmit
+          }
+        >
+          <input placeholder="please type" value={value} onChange={onChange} />
+          {selectedTodo ? (
+            <div className="rewrite">
+              <TiPencil
+                onClick={() => {
+                  onUpdate(selectedTodo.id, value);
+                }}
+              />
+              <TiTrash
+                onClick={() => {
+                  onRemove(selectedTodo.id);
+                }}
+              />
+            </div>
+          ) : (
+            <button type="submit">
+              <MdAddCircle />
+            </button>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
