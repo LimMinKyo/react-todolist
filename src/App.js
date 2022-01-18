@@ -29,7 +29,7 @@ const App = () => {
   ]);
 
   const onInsertToggle = () => {
-    if(selectedTodo){
+    if (selectedTodo) {
       setSelectedTodo(null);
     }
     setInsertToggle((prev) => !prev);
@@ -60,16 +60,18 @@ const App = () => {
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-  
+
   const onRemove = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
     onInsertToggle();
   };
 
   const onUpdate = (id, text) => {
-    setTodos(todos => todos.map(todo => todo.id === id ? {...todo, text} : todo ));
+    setTodos((todos) =>
+      todos.map((todo) => (todo.id === id ? { ...todo, text } : todo))
+    );
     onInsertToggle();
-  }
+  };
 
   return (
     <div>
