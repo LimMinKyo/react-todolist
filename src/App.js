@@ -3,7 +3,29 @@ import { MdAddCircle } from 'react-icons/md';
 import Template from './components/Template';
 import TodoList from './components/TodoList';
 import TodoInsert from './components/TodoInsert';
-import './App.css';
+import styled from 'styled-components';
+
+const AddTodoButton = styled.div`
+  position: fixed;
+  right: -5px;
+  bottom: 0px;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  font-size: 5rem;
+  color: ${(props) => props.theme.pointColor};
+
+  @media screen and (min-width: 700px) {
+    position: static;
+    width: 100%;
+    max-width: 520px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+  }
+`;
 
 let nextId = 4;
 
@@ -74,7 +96,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <Template todosLength={todos.length}>
         <TodoList
           todos={todos}
@@ -82,9 +104,6 @@ const App = () => {
           onInsertToggle={onInsertToggle}
           onChangeSelectedTodo={onChangeSelectedTodo}
         />
-        <div className="add-todo-button" onClick={onInsertToggle}>
-          <MdAddCircle />
-        </div>
         {insertToggle && (
           <TodoInsert
             todos={todos}
@@ -96,8 +115,11 @@ const App = () => {
             onUpdate={onUpdate}
           />
         )}
+        <AddTodoButton onClick={onInsertToggle}>
+          <MdAddCircle />
+        </AddTodoButton>
       </Template>
-    </div>
+    </>
   );
 };
 
